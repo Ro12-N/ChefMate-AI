@@ -19,7 +19,7 @@
 - Explore recipes by category/cuisine
 - Get AI-based personalized recipe suggestions
 
-This project demonstrates **full-stack development, SaaS architecture, AI integration, and modern UI/UX skills** — perfect for portfolio and resume.
+This project demonstrates **full-stack development, SaaS architecture, AI integration, and modern UI/UX skills**
 
 ---
 
