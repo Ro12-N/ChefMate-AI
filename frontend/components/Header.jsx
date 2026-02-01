@@ -21,7 +21,7 @@ export default async function Header() {
           className="flex items-center gap-2 group"
         >
           <Image
-            src="/orange-logo.png"
+            src="/orangelogo.png"
             alt="ChefMate Logo"
             width={60}
             height={60}
