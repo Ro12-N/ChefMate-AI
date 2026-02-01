@@ -1,29 +1,76 @@
 import React from "react";
-import { SignedIn, SignedOut, SignInButton, SignUpButton, UserButton } from "@clerk/nextjs";
-const Header = () => {
-    return ( 
-         <header className="fixed top-0 w-full border-b border-stone-200 bg-stone-50/80 backdrop-blur-md z-50 supports-backdrop-filter:bg-stone-50/60">
+import { Button } from "./ui/button";
+import { Cookie, Refrigerator } from "lucide-react";
+import Link from "next/link";
+import { SignedIn, SignedOut, SignInButton, SignUpButton } from "@clerk/nextjs";
+import Image from "next/image";
+import { ClerkProvider } from "@clerk/nextjs";
+import { neobrutalism } from "@clerk/themes";
+import { UserButton } from "@clerk/nextjs";
+import UserDropdown from "./userDropdown";
+
+export default async function Header() {
+  const user = null; // Replace with actual user fetching logic if needed
+
+  return (
+    <header className="fixed top-0 w-full border-b border-stone-200 bg-stone-50/80 backdrop-blur-md z-50 supports-backdrop-filter:bg-stone-50/60">
       <nav className="container mx-auto px-4 h-16 flex items-center justify-between">
-           logo
-           <div>nav links</div>
-           <div className="flex items-center space-x-4">
-             < SignedIn mode="modal">
-              <UserButton />
-            </SignedIn>
-            <SignedOut mode="modal">
-              <button variant="ghost" className="text-stone-700 hover:text-stone-900">Sign In</button>
-              <SignUpButton>
-               <button className="px-8 py-3 bg-white text-orange-500 font-semibold 
-               rounded-full border-2 border-orange-500
-               hover:bg-orange-500 hover:text-white
-               transition duration-200">
-               Get Started
-              </button>
-              </SignUpButton>
-            </SignedOut>
-            </div>
-            </nav>
-          </header>
-    );
-};
-export default Header;
+        {/* Logo */}
+        <Link
+          href={user ? "/dashboard" : "/"}
+          className="flex items-center gap-2 group"
+        >
+          <Image
+            src="/orange-logo.png"
+            alt="ChefMate Logo"
+            width={60}
+            height={60}
+            className="w-16"
+          />
+        </Link>
+
+        {/* Navigation Links */}
+        <div className="hidden md:flex items-center space-x-8 text-sm font-medium text-stone-600">
+          <Link
+            href="/recipes"
+            className="hover:text-orange-600 transition-colors flex gap-1.5 items-center"
+          >
+            <Cookie className="w-4 h-4" />
+            My Recipes
+          </Link>
+          <Link
+            href="/pantry"
+            className="hover:text-orange-600 transition-colors flex gap-1.5 items-center"
+          >
+            <Refrigerator className="w-4 h-4" />
+            My Pantry
+          </Link>
+        </div>
+
+        {/* Action Buttons */}
+        <div className="flex items-center space-x-4">
+
+          <SignedIn>
+            <UserDropdown />
+          </SignedIn>
+
+          <SignedOut>
+            <SignInButton mode="modal">
+              <Button
+                variant="ghost"
+                className="text-stone-600 hover:text-orange-600 hover:bg-orange-50 font-medium"
+              >
+                Sign In
+              </Button>
+            </SignInButton>
+            <SignUpButton mode="modal">
+              <Button variant="primary" className="rounded-full px-6">
+                Get Started
+              </Button>
+            </SignUpButton>
+          </SignedOut>
+        </div>
+      </nav>
+    </header>
+  );
+}
