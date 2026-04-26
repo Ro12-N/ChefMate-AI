@@ -1,16 +1,17 @@
 import React from "react";
 import { Button } from "./ui/button";
-import { Cookie, Refrigerator } from "lucide-react";
+import { Cookie, Refrigerator, Sparkles } from "lucide-react";
 import Link from "next/link";
 import { SignedIn, SignedOut, SignInButton, SignUpButton } from "@clerk/nextjs";
+import HowToCookModal from "./HowToCookModal";
+import PricingModal from "./PricingModal";
 import Image from "next/image";
-import { ClerkProvider } from "@clerk/nextjs";
-import { neobrutalism } from "@clerk/themes";
-import { UserButton } from "@clerk/nextjs";
-import UserDropdown from "./userDropdown";
+import { checkUser } from "@/lib/checkUser";
+import { Badge } from "./ui/badge";
+import UserDropdown from "./UserDropdown";
 
 export default async function Header() {
-  const user = null; // Replace with actual user fetching logic if needed
+  const user = await checkUser();
 
   return (
     <header className="fixed top-0 w-full border-b border-stone-200 bg-stone-50/80 backdrop-blur-md z-50 supports-backdrop-filter:bg-stone-50/60">
@@ -21,8 +22,8 @@ export default async function Header() {
           className="flex items-center gap-2 group"
         >
           <Image
-            src="/orangelogo.png"
-            alt="ChefMate Logo"
+            src="/orange-logo.png"
+            alt="Servd Logo"
             width={60}
             height={60}
             className="w-16"
@@ -49,8 +50,34 @@ export default async function Header() {
 
         {/* Action Buttons */}
         <div className="flex items-center space-x-4">
+          <HowToCookModal />
 
           <SignedIn>
+            {/* Pricing Modal with Built-in Trigger */}
+            {user && (
+              <PricingModal subscriptionTier={user.subscriptionTier}>
+                <Badge
+                  variant="outline"
+                  className={`flex h-8 px-3 gap-1.5 rounded-full text-xs font-semibold transition-all ${
+                    user.subscriptionTier === "pro"
+                      ? "bg-linear-to-r from-orange-600 to-amber-500 text-white border-none shadow-sm"
+                      : "bg-stone-200/50 text-stone-600 border-stone-200 cursor-pointer hover:bg-stone-300/50 hover:border-stone-300"
+                  }`}
+                >
+                  <Sparkles
+                    className={`h-3 w-3 ${
+                      user.subscriptionTier === "pro"
+                        ? "text-white fill-white/20"
+                        : "text-stone-500"
+                    }`}
+                  />
+                  <span>
+                    {user.subscriptionTier === "pro" ? "Pro Chef" : "Free Plan"}
+                  </span>
+                </Badge>
+              </PricingModal>
+            )}
+
             <UserDropdown />
           </SignedIn>
 
