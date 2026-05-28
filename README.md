@@ -37,17 +37,46 @@ This project demonstrates **full-stack development, SaaS architecture, AI integr
 
 ---
 
+
 ## 🛠️ Tech Stack
 
-| Layer | Technology |
-|-------|------------|
-| Frontend | React 19, Next.js 16, Tailwind CSS, Shadcn UI |
+| Category | Technology |
+|----------|------------|
+| Frontend | Next.js 15, React 19, Tailwind CSS |
 | Backend | Strapi Headless CMS |
 | Database | PostgreSQL |
-| Authentication | Google OAuth |
-| AI Integration | AI Pantry Scanner, Recipe Suggestions |
-| SaaS Features | Arcjet (Rate Limiting & Bot Protection) |
-| Deployment | Vercel / Production-ready |
+| Auth | Google OAuth (via Strapi/NextAuth) |
+| AI | OpenAI API / Gemini API |
+| Security | Arcjet (Rate Limiting, Bot Protection) |
+| Payments | Stripe |
+| Deployment | Vercel |
+
+## 📊 Database Schema (Strapi)
+
+```json
+// Recipe Collection Type
+{
+  "title": "Spaghetti Carbonara",
+  "description": "Classic Italian pasta dish",
+  "ingredients": ["Pasta", "Eggs", "Pecorino", "Pancetta"],
+  "instructions": "...",
+  "prepTime": 15,
+  "cookTime": 15,
+  "difficulty": "Medium",
+  "cuisine": "Italian",
+  "category": "Dinner",
+  "image": { "url": "..." }
+}
+
+// User Collection Type
+{
+  "username": "john_doe",
+  "email": "john@example.com",
+  "pantry": ["Tomato", "Cheese", "Basil"],
+  "favorites": ["recipe_id_1", "recipe_id_2"],
+  "plan": "free",
+  "aiSuggestionsUsed": 3
+}
 
 ---
 
