@@ -8,7 +8,7 @@ import PricingModal from "./PricingModal";
 import Image from "next/image";
 import { checkUser } from "@/lib/checkUser";
 import { Badge } from "./ui/badge";
-import UserDropdown from "./UserDropdown";
+//import UserDropdown from "./UserDropdown";
 
 export default async function Header() {
   const user = await checkUser();
@@ -78,7 +78,7 @@ export default async function Header() {
               </PricingModal>
             )}
 
-            <UserDropdown />
+            {/* <UserDropdown /> */}
           </SignedIn>
 
           <SignedOut>
