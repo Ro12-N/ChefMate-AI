@@ -51,6 +51,20 @@ This project demonstrates **full-stack development, SaaS architecture, AI integr
 | Payments | Stripe |
 | Deployment | Vercel |
 
+## Deploy frontend on Vercel
+
+This repo is a monorepo. **Only deploy the `frontend` folder** (not the repo root).
+
+1. Vercel → your project → **Settings** → **Build and Deployment**
+2. **Root Directory** → **Edit** → select **`frontend`** → Save
+3. **Framework Preset** → **Next.js**
+4. **Output Directory** → leave **empty** (default). Do not set `.next` manually.
+5. **Build Command** → `npm run build` (default)
+6. Add environment variables from `frontend/.env.example`
+7. **Deployments** → … on latest → **Redeploy**
+
+If you see `404: NOT_FOUND` with a Vercel error ID, the root directory is almost always wrong (Vercel is not building the Next.js app).
+
 ## 📊 Database Schema (Strapi)
 
 ```json
