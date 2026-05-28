@@ -9,7 +9,7 @@ import Image from "next/image";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Servd - AI Recipes Platform",
+  title: "Chefmate - AI Recipes Platform",
   description: "",
 };
 
