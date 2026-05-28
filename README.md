@@ -10,11 +10,6 @@
 
 > **Turn your leftovers into masterpieces.** Snap a photo of your fridge. We'll tell you what to cook. Save money, reduce waste, and eat better tonight.
 
-<p align="center">
-  <img src="./frontend/public/images/chefmate/hero-section.png" alt="ChefMate AI Dashboard" width="800">
-</p>
-
----
 
 ## 🌟 Overview
 
