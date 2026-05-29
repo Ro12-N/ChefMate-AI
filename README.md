@@ -40,6 +40,10 @@ This project demonstrates **full-stack development, SaaS architecture, AI integr
 ---
 
 ## 📸 Screenshots
+### Workflow
+![Architecture](./frontend/public/images/arc1.png)
+![](./frontend/public/images/arc2.png)
+
 
 ### 🏠 Hero Section
 ![Hero Section](./frontend/public/images/home-hero.png)
